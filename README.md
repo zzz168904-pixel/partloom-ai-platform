@@ -4,7 +4,7 @@
 
 PartLoom 是一款运行于 Windows 的 CAD 自动化工作台，以确定性的 CAD
 中间语言（CAD-IR）为核心，连接规划、校验、分阶段执行、SolidWorks、
-AutoCAD、PDF2CAD、文件转换和结果报告。语言模型不能绕过门禁直接调用
+AutoCAD、PDF to CAD、文件转换和结果报告。语言模型不能绕过门禁直接调用
 CAD API。
 
 ## 当前能力
