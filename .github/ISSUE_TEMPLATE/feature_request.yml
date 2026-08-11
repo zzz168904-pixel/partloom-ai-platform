@@ -1,0 +1,25 @@
+name: Feature request
+description: 建议扩展 CAD-IR、Pipeline 或 CAD 连接器
+title: "[Feature] "
+labels: ["enhancement", "needs-spec"]
+body:
+  - type: input
+    id: operation
+    attributes:
+      label: Proposed operation or module
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Synthetic use case
+      description: 说明参数、目标引用、依赖和预期几何，不要上传客户文件。
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Acceptance criteria
+      description: 说明可以由自动测试和隔离 CAD 验收确认的结果。
+    validations:
+      required: true

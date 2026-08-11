@@ -1,0 +1,70 @@
+# Local Python environments and caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.build-venv/
+*.egg-info/
+artifacts/
+build/
+dist/
+
+# Local secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+
+# Runtime output and temporary workspaces
+logs/
+reports/
+copies/
+output/
+outputs/
+tmp/
+temp/
+*.log
+
+# User/reference datasets and third-party source snapshots
+CAD_Test_Dataset/
+external/
+
+# Generated CAD and review artifacts
+*.SLDPRT
+*.SLDASM
+*.SLDDRW
+*.sldprt
+*.sldasm
+*.slddrw
+*.STEP
+*.STP
+*.step
+*.stp
+*.IGES
+*.IGS
+*.iges
+*.igs
+*.X_T
+*.X_B
+*.x_t
+*.x_b
+*.DWG
+*.DXF
+*.dwg
+*.dxf
+*.bak
+*.tmp
+
+# Generated .NET and IDE files
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.pdb
+
+# OS metadata
+.DS_Store
+Thumbs.db

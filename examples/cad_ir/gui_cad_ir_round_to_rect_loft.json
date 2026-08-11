@@ -1,0 +1,50 @@
+{
+  "version": "cad.ir.v1",
+  "unit_system": "mm",
+  "task_type": "model_3d",
+  "part_type": "round_to_rect_transition",
+  "parameters": {
+    "unit": "mm",
+    "material": "304 stainless steel"
+  },
+  "outputs": [
+    "SLDPRT"
+  ],
+  "features": [
+    {
+      "id": "transition_loft",
+      "name": "RoundToRectTransition",
+      "operation": "loft",
+      "required": true,
+      "parameters": {
+        "sections": [
+          {
+            "offset_mm": 0.0,
+            "shape": "circle",
+            "diameter_mm": 40.0,
+            "center_mm": [0.0, 0.0]
+          },
+          {
+            "offset_mm": 80.0,
+            "shape": "rectangle",
+            "length_mm": 60.0,
+            "width_mm": 40.0,
+            "center_mm": [0.0, 0.0]
+          }
+        ]
+      },
+      "options": {
+        "operation": "base",
+        "mode": "new_model",
+        "base_plane": "front",
+        "keep_tangency": true,
+        "force_non_rational": false
+      },
+      "target": {
+        "resolution": "new_body",
+        "body_ref": "primary_solid"
+      },
+      "dependencies": []
+    }
+  ]
+}

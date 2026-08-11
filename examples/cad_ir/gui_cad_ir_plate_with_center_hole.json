@@ -1,0 +1,53 @@
+{
+  "version": "cad.ir.v1",
+  "unit_system": "mm",
+  "task_type": "model_3d",
+  "part_type": "plate",
+  "outputs": [
+    "SLDPRT"
+  ],
+  "features": [
+    {
+      "id": "base",
+      "name": "BasePlate",
+      "operation": "base_plate",
+      "required": true,
+      "parameters": {
+        "length_mm": 100.0,
+        "width_mm": 60.0,
+        "thickness_mm": 10.0
+      },
+      "options": {},
+      "target": {
+        "resolution": "new_body",
+        "body_ref": "primary_solid"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "center_hole",
+      "name": "CenterHole",
+      "operation": "through_hole",
+      "required": true,
+      "parameters": {
+        "diameter_mm": 20.0,
+        "count": 1
+      },
+      "options": {
+        "position": "center"
+      },
+      "target": {
+        "resolution": "semantic_reference",
+        "body_ref": "primary_solid",
+        "feature_ref": "base",
+        "face_role": "outer_horizontal_face"
+      },
+      "dependencies": [
+        {
+          "kind": "feature",
+          "feature_id": "base"
+        }
+      ]
+    }
+  ]
+}

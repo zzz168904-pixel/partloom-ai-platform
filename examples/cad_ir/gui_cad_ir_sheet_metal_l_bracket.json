@@ -1,0 +1,48 @@
+{
+  "version": "cad.ir.v1",
+  "unit_system": "mm",
+  "task_type": "model_3d",
+  "part_type": "sheet_metal_l_bracket",
+  "parameters": {
+    "unit": "mm",
+    "material": "304 stainless steel"
+  },
+  "outputs": [
+    "SLDPRT"
+  ],
+  "features": [
+    {
+      "id": "sheet_bracket",
+      "name": "SheetMetalLBracket",
+      "operation": "sheet_metal",
+      "required": true,
+      "parameters": {
+        "length_mm": 120.0,
+        "width_mm": 80.0,
+        "thickness_mm": 2.0,
+        "bend_radius_mm": 2.0,
+        "edge_flanges": [
+          {
+            "edge": "width_positive",
+            "height_mm": 30.0,
+            "angle_deg": 90.0,
+            "flip_direction": false
+          }
+        ]
+      },
+      "options": {
+        "mode": "new_model",
+        "base_plane": "top",
+        "flat_pattern": {
+          "enabled": false,
+          "final_state": "folded"
+        }
+      },
+      "target": {
+        "resolution": "new_body",
+        "body_ref": "primary_solid"
+      },
+      "dependencies": []
+    }
+  ]
+}

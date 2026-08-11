@@ -1,0 +1,35 @@
+{
+  "schema_version": "cad_agent.development_task.v1",
+  "id": "partloom_public_beta_010",
+  "title": "Harden and validate PartLoom AI Platform v0.1.0 Beta",
+  "task_kind": "mainline",
+  "phase_id": "public_beta",
+  "objective_id": "release_hardening",
+  "status": "in_progress",
+  "scope": [
+    "Maintain deterministic CAD-IR validation and stage guards.",
+    "Keep public source free of secrets and proprietary customer data.",
+    "Validate standalone startup and installation."
+  ],
+  "requested_changes": [
+    "privacy_sanitization",
+    "release_packaging",
+    "documentation",
+    "regression"
+  ],
+  "expected_artifacts": [
+    "source package",
+    "Windows ZIP",
+    "Windows installer",
+    "release audit result"
+  ],
+  "acceptance_tests": [
+    "Release audit passes.",
+    "Synthetic CAD-IR examples parse.",
+    "Standalone application starts without Python installed.",
+    "No CAD application starts during packaging tests."
+  ],
+  "evidence": [
+    "artifacts"
+  ]
+}

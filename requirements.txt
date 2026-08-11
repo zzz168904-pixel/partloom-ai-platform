@@ -1,0 +1,10 @@
+pywin32>=306
+PySide6>=6.7
+openai-agents>=0.18.1
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+httpx>=0.27,<1
+python-dotenv>=1.0,<2
+comtypes>=1.4,<2
+pypdf>=5,<7
+pdfplumber>=0.11,<1

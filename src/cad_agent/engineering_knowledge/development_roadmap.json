@@ -1,0 +1,69 @@
+{
+  "schema_version": "cad_agent.development_roadmap.v1",
+  "roadmap_version": 1,
+  "product_goal": "Ship a privacy-safe, deterministic CAD automation platform whose supported operations fail closed and remain independently verifiable.",
+  "current_phase_id": "public_beta",
+  "phase_order": [
+    "public_beta"
+  ],
+  "global_rules": [
+    "No language model may call a CAD API directly.",
+    "Unsupported or ambiguous geometry must fail closed.",
+    "Public examples must be synthetic.",
+    "Secrets, customer files, logs, and generated CAD outputs must not enter source control."
+  ],
+  "branch_policy": {
+    "allowed_types": [
+      "bugfix",
+      "resource_stability",
+      "test_infrastructure",
+      "documentation",
+      "research_spike"
+    ],
+    "required_fields": [
+      "parent_task_id",
+      "branch_type",
+      "supports_objective_id",
+      "reason",
+      "max_iterations",
+      "return_to_mainline"
+    ],
+    "rules": [
+      "A branch must support the current public-beta workstream.",
+      "A branch must be time-boxed and return to the mainline.",
+      "A completed branch requires evidence and passing tests."
+    ]
+  },
+  "phases": [
+    {
+      "id": "public_beta",
+      "order": 1,
+      "name": "PartLoom 0.1.0 public beta",
+      "status": "in_progress",
+      "depends_on": [],
+      "objective": "Harden installation, privacy, deterministic execution, and supported connector workflows.",
+      "workstreams": [
+        {
+          "id": "release_hardening",
+          "name": "Release hardening",
+          "deliverables": [
+            "clean source distribution",
+            "standalone Windows build",
+            "installer",
+            "release audit",
+            "regression results"
+          ]
+        }
+      ],
+      "exit_criteria": [
+        "The release audit reports zero secrets, customer files, personal paths, logs, and output models.",
+        "Source tests and standalone launch smoke tests pass.",
+        "Installer and ZIP artifacts are reproducible."
+      ],
+      "forbidden_changes": [
+        "direct_llm_to_executor",
+        "unverified_release"
+      ]
+    }
+  ]
+}

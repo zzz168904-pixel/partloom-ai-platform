@@ -1,0 +1,57 @@
+{
+  "version": "cad.ir.v1",
+  "unit_system": "mm",
+  "task_type": "model_3d",
+  "part_type": "swept_elbow",
+  "parameters": {
+    "unit": "mm",
+    "material": "304 stainless steel"
+  },
+  "outputs": [
+    "SLDPRT"
+  ],
+  "features": [
+    {
+      "id": "elbow_sweep",
+      "name": "TangentElbowSweep",
+      "operation": "sweep",
+      "required": true,
+      "parameters": {
+        "diameter_mm": 10.0
+      },
+      "options": {
+        "operation": "base",
+        "mode": "new_model",
+        "profile_type": "circle",
+        "path_plane": "front",
+        "path": {
+          "type": "segments",
+          "segments": [
+            {
+              "type": "line",
+              "start_mm": [0.0, 0.0],
+              "end_mm": [60.0, 0.0]
+            },
+            {
+              "type": "arc",
+              "start_mm": [60.0, 0.0],
+              "end_mm": [80.0, 20.0],
+              "center_mm": [60.0, 20.0],
+              "direction": "ccw"
+            },
+            {
+              "type": "line",
+              "start_mm": [80.0, 20.0],
+              "end_mm": [80.0, 70.0]
+            }
+          ]
+        }
+      },
+      "target": {
+        "resolution": "new_body",
+        "body_ref": "primary_solid"
+      },
+      "dependencies": []
+    }
+  ]
+}

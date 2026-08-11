@@ -1,0 +1,43 @@
+{
+  "version": "cad.ir.v1",
+  "unit_system": "mm",
+  "task_type": "model_3d",
+  "part_type": "spur_gear",
+  "parameters": {
+    "unit": "mm",
+    "material": "45 steel"
+  },
+  "outputs": [
+    "SLDPRT"
+  ],
+  "features": [
+    {
+      "id": "drive_gear",
+      "name": "DriveGear_m2_z24",
+      "operation": "gear",
+      "required": true,
+      "parameters": {
+        "module_mm": 2.0,
+        "teeth": 24,
+        "face_width_mm": 12.0,
+        "bore_diameter_mm": 12.0
+      },
+      "options": {
+        "mode": "new_model",
+        "gear_type": "spur",
+        "pressure_angle_deg": 20.0,
+        "backlash_mm": 0.0,
+        "keyway": {
+          "enabled": true,
+          "width_mm": 4.0,
+          "depth_mm": 2.0
+        }
+      },
+      "target": {
+        "resolution": "new_body",
+        "body_ref": "primary_solid"
+      },
+      "dependencies": []
+    }
+  ]
+}

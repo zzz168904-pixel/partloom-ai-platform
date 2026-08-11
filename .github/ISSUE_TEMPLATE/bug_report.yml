@@ -1,0 +1,48 @@
+name: Bug report
+description: 使用合成 CAD-IR 报告可复现问题
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: 请勿上传客户 CAD、日志、截图、密钥或未脱敏绝对路径。
+  - type: input
+    id: version
+    attributes:
+      label: PartLoom version
+      placeholder: v0.1.0-beta.1
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows、Python、SolidWorks/AutoCAD 主版本
+    validations:
+      required: true
+  - type: textarea
+    id: cad_ir
+    attributes:
+      label: Minimal synthetic CAD-IR
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Data check
+      options:
+        - label: 我确认内容只包含合成数据，且已删除密钥、客户信息和个人路径。
+          required: true

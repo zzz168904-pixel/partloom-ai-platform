@@ -1,0 +1,160 @@
+{
+  "knowledge_version": "2026.07.12.1",
+  "default_profile": "ISO_metric",
+  "profiles": {
+    "ISO_metric": {
+      "dimension_style": "ISO-25",
+      "unit": "mm",
+      "projection_method": "project_template",
+      "standards": ["ISO 129-1:2018", "ISO 5456-2:1996", "ISO 5457:1999", "ISO 7200:2004"]
+    },
+    "ASME_inch": {
+      "dimension_style": "project_template",
+      "unit": "inch",
+      "projection_method": "project_template",
+      "standards": ["ASME Y14.5-2018 (R2024)", "ASME Y14.3"]
+    }
+  },
+  "sources": [
+    {
+      "id": "ISO 129-1:2018",
+      "url": "https://www.iso.org/standard/64007.html",
+      "scope": "General principles for presenting dimensions and associated tolerances",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "ISO 5456-2:1996",
+      "url": "https://www.iso.org/standard/11502.html",
+      "scope": "Orthographic representation methods",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "ISO 5457:1999",
+      "url": "https://www.iso.org/standard/29017.html",
+      "scope": "Drawing sheet sizes and layout",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "ISO 7200:2004",
+      "url": "https://www.iso.org/standard/35446.html",
+      "scope": "Title-block and document-header data fields",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "ASME Y14.5-2018 (R2024)",
+      "url": "https://www.asme.org/codes-standards/find-codes-standards/dimensioning-and-tolerancing/2018",
+      "scope": "Dimensioning, tolerancing and GD&T design language",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS InsertModelAnnotations3",
+      "url": "https://help.solidworks.com/2025/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~insertmodelannotations3.html",
+      "scope": "Import model annotations into selected drawing views and suppress duplicates",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS CreateSectionViewAt5",
+      "url": "https://help.solidworks.com/2025/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.idrawingdoc~createsectionviewat5.html",
+      "scope": "Create a native drawing section view from selected section-line sketch segments",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS CreateDetailViewAt4",
+      "url": "https://help.solidworks.com/2025/english/api/sldworksapi/Create_Detail_Circle_and_Detail_View_Example_CSharp.htm",
+      "scope": "Create a native drawing detail boundary and scaled detail view",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS LinearPatternFeatureData",
+      "url": "https://help.solidworks.com/2025/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.ILinearPatternFeatureData.html",
+      "scope": "Selection marks and parameters for native feature linear patterns",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS FeatureCircularPattern4",
+      "url": "https://help.solidworks.com/2021/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFeatureManager~FeatureCircularPattern4.html",
+      "scope": "Native circular pattern instance count, angle, equal spacing and selection marks",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "SOLIDWORKS InsertMirrorFeature2",
+      "url": "https://help.solidworks.com/2025/English/api/sldworksapi/SolidWorks.Interop.sldworks~SolidWorks.Interop.sldworks.IFeatureManager~InsertMirrorFeature2.html",
+      "scope": "Native feature mirror selection marks and side-effect controls",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "AutoCAD dimension types",
+      "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-OnBoarding/files/ACD_FOUNDATIONS_MAIN10.html",
+      "scope": "Linear, ordinate, radial and angular dimensions plus center marks and centerlines",
+      "status_checked": "2026-07-11"
+    },
+    {
+      "id": "AutoCAD dimension styles",
+      "url": "https://help.autodesk.com/view/ACD/2025/ENU/?guid=GUID-5469B348-3425-41C6-9CEC-F267BF6CCCA2",
+      "scope": "Named styles controlling arrows, text, units and tolerances",
+      "status_checked": "2026-07-11"
+    }
+  ],
+  "rules": [
+    {
+      "id": "DRAWING-001",
+      "topic": "design_intent",
+      "rule": "Dimension and tolerance plans must express function, manufacture and inspection intent; no tolerance is invented when absent."
+    },
+    {
+      "id": "DRAWING-002",
+      "topic": "view_selection",
+      "rule": "Place a feature dimension in the view where the feature has the clearest true shape; add section or detail views only when required for unambiguous definition."
+    },
+    {
+      "id": "DRAWING-003",
+      "topic": "projection",
+      "rule": "First-angle or third-angle projection must come from the user or project template and must be recorded in the drawing plan."
+    },
+    {
+      "id": "DRAWING-004",
+      "topic": "dimension_completeness",
+      "rule": "Define each required size once, then define feature locations from functional datums or stable reference edges; avoid duplicate and contradictory dimensions."
+    },
+    {
+      "id": "DRAWING-005",
+      "topic": "circular_features",
+      "rule": "Use diameter callouts for complete circles and holes, radius callouts for arcs and fillets, and add center marks or centerlines for circular features and axes."
+    },
+    {
+      "id": "DRAWING-006",
+      "topic": "holes",
+      "rule": "A hole plan separates size, type, depth or through condition, count and location; threaded, counterbored and countersunk holes require dedicated callouts."
+    },
+    {
+      "id": "DRAWING-007",
+      "topic": "patterns",
+      "rule": "Repeated features use count plus spacing, pitch-circle or ordinate/baseline location logic instead of a redundant dimension on every instance."
+    },
+    {
+      "id": "DRAWING-008",
+      "topic": "placement",
+      "rule": "Prefer dimensions outside view geometry, group related dimensions, keep consistent offsets and move text or dimension lines when crossings or collisions are detected."
+    },
+    {
+      "id": "DRAWING-009",
+      "topic": "sheet_layout",
+      "rule": "Compute a usable sheet zone from sheet boundaries and title-block reservation before scaling and placing views or annotations."
+    },
+    {
+      "id": "DRAWING-010",
+      "topic": "associativity",
+      "rule": "Prefer native associative model annotations and native AutoCAD dimension objects so updates propagate with geometry changes."
+    },
+    {
+      "id": "DRAWING-011",
+      "topic": "title_block",
+      "rule": "Keep document identity, title, material, scale, revision and approval data as structured title-block fields; report conflicts instead of choosing silently."
+    },
+    {
+      "id": "DRAWING-012",
+      "topic": "validation",
+      "rule": "A drawing passes only when required views and annotations exist, geometry stays inside the usable sheet zone, outputs are non-empty and no unresolved conflicts remain."
+    }
+  ]
+}
