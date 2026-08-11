@@ -2,6 +2,11 @@
 
 ## 0.1.0 Beta.1
 
+- Expanded the public documentation with an honest capability matrix,
+  architecture guide, CAD-IR guide, source-first installation instructions,
+  troubleshooting, and contribution requirements.
+- Clarified that the current GitHub release contains source archives and does
+  not yet provide a signed prebuilt Windows installer.
 - Open-sourced the complete platform core: CAD-IR, validation, planning,
   registries, geometry resolution, Pipeline, GUI, gateway, CAD connectors,
   production executor source, Add-in source, tests, and packaging scripts.

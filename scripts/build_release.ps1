@@ -40,7 +40,9 @@ $docs = @(
     "LICENSE",
     "NOTICE",
     "README.md",
+    "CAPABILITIES.md",
     "INSTALL.md",
+    "CONTRIBUTING.md",
     "DISCLAIMER.md",
     "SECURITY.md",
     "THIRD_PARTY_NOTICES.md",
@@ -49,6 +51,15 @@ $docs = @(
 )
 foreach ($name in $docs) {
     Copy-Item -LiteralPath (Join-Path $root $name) -Destination $dist -Force
+}
+
+$docsDir = Join-Path $root "docs"
+if (Test-Path -LiteralPath $docsDir) {
+    $distDocs = Join-Path $dist "docs"
+    New-Item -ItemType Directory -Path $distDocs -Force | Out-Null
+    Get-ChildItem -LiteralPath $docsDir -File | ForEach-Object {
+        Copy-Item -LiteralPath $_.FullName -Destination $distDocs -Force
+    }
 }
 
 New-Item -ItemType Directory -Path $artifacts -Force | Out-Null
