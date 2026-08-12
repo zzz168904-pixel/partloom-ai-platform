@@ -23,4 +23,7 @@ You are responsible for:
 - reviewing generated geometry and manufacturing documentation;
 - backing up source models before running automation.
 
-The software is provided under the MIT License without warranty.
+The software is provided under the PolyForm Noncommercial License 1.0.0
+without warranty. Commercial use requires a separate written license from
+the copyright holder. Historical MIT-licensed releases remain governed by
+the license shipped with those releases.

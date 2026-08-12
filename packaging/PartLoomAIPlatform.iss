@@ -1,5 +1,5 @@
 #define AppName "PartLoom AI Platform"
-#define AppVersion "0.1.0 Beta.1"
+#define AppVersion "0.1.0 Beta.2"
 #define AppPublisher "PartLoom AI Platform contributors"
 #define AppExeName "PartLoomAI.exe"
 
@@ -13,7 +13,7 @@ DefaultGroupName=PartLoom AI Platform
 DisableProgramGroupPage=yes
 LicenseFile=..\LICENSE
 OutputDir=..\artifacts
-OutputBaseFilename=PartLoom-AI-Platform-0.1.0-Beta.1-Setup
+OutputBaseFilename=PartLoom-AI-Platform-0.1.0-Beta.2-Setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern

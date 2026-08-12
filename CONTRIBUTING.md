@@ -16,6 +16,19 @@ input -> candidate plan -> CAD-IR -> validator -> confirmation
 3. 较大的 operation 或架构变更先提交设计 Issue；
 4. 只使用你有权公开的合成数据和代码。
 
+## 贡献授权状态
+
+PartLoom 采用非商业源码可见许可，并保留提供单独商业授权的能力。为了避免外部
+贡献的版权状态阻断后续商业授权，在正式 Contributor License Agreement（CLA）
+发布前：
+
+- 欢迎通过 Issue 提交缺陷报告、设计建议和最小合成复现；
+- 外部 Pull Request 可以用于讨论，但不会在未签署单独贡献协议前合并；
+- 提交 Issue 或勾选 PR 模板不构成版权转让或商业再授权；
+- 维护者确认贡献协议后，才会把该 PR 标记为可合并。
+
+详见 [CONTRIBUTOR_POLICY.md](CONTRIBUTOR_POLICY.md)。
+
 ## 隐私与许可证
 
 Pull Request 不得包含：
@@ -26,7 +39,8 @@ Pull Request 不得包含：
 - 日志、截图、生成模型、OCR 权重或厂商二进制文件；
 - 没有再分发授权的模板、标准件库或第三方源码。
 
-测试必须使用合成 CAD-IR 和合成几何。提交即表示你有权按仓库许可证公开该贡献。
+测试必须使用合成 CAD-IR 和合成几何。提交 PR 表示你有权提供该内容，但不会替代
+项目要求的单独贡献协议。
 
 ## 开发环境
 

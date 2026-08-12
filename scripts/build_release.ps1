@@ -43,10 +43,13 @@ $docs = @(
     "CAPABILITIES.md",
     "INSTALL.md",
     "CONTRIBUTING.md",
+    "CONTRIBUTOR_POLICY.md",
     "DISCLAIMER.md",
     "SECURITY.md",
     "THIRD_PARTY_NOTICES.md",
-    "OPEN_SOURCE_SCOPE.md",
+    "SOURCE_AVAILABLE_SCOPE.md",
+    "COMMERCIAL_LICENSE.md",
+    "LICENSE_HISTORY.md",
     "VERSION"
 )
 foreach ($name in $docs) {
@@ -63,7 +66,7 @@ if (Test-Path -LiteralPath $docsDir) {
 }
 
 New-Item -ItemType Directory -Path $artifacts -Force | Out-Null
-$zipPath = Join-Path $artifacts "PartLoom-AI-Platform-0.1.0-Beta.1-Windows-x64.zip"
+$zipPath = Join-Path $artifacts "PartLoom-AI-Platform-0.1.0-Beta.2-Windows-x64.zip"
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force
 }

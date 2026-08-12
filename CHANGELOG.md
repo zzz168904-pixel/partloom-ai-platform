@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 Beta.2
+
+- Changed future releases to the PolyForm Noncommercial License 1.0.0.
+- Added explicit commercial-use boundaries and a separate commercial-license
+  path for companies, paid services, customer delivery, product integration,
+  SaaS/API use, bundling, and resale.
+- Recorded that `v0.1.0-beta.1` and commits through `f2c740c` remain available
+  under MIT; the historical grant is not revoked.
+
 ## 0.1.0 Beta.1
 
 - Expanded the public documentation with an honest capability matrix,
