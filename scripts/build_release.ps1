@@ -44,7 +44,10 @@ $docs = @(
     "INSTALL.md",
     "CONTRIBUTING.md",
     "CONTRIBUTOR_POLICY.md",
+    "COMPATIBILITY.md",
     "DISCLAIMER.md",
+    "SUPPORT.md",
+    "RELEASE_POLICY.md",
     "SECURITY.md",
     "THIRD_PARTY_NOTICES.md",
     "SOURCE_AVAILABLE_SCOPE.md",
@@ -66,7 +69,7 @@ if (Test-Path -LiteralPath $docsDir) {
 }
 
 New-Item -ItemType Directory -Path $artifacts -Force | Out-Null
-$zipPath = Join-Path $artifacts "PartLoom-AI-Platform-0.1.0-Beta.2-Windows-x64.zip"
+$zipPath = Join-Path $artifacts "PartLoom-AI-Platform-0.1.0-Beta.3-Windows-x64.zip"
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force
 }

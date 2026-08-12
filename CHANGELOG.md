@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0 Beta.3
+
+- Added automated repository-health checks for license, version, dependency,
+  GitHub Action pinning, official-source, and release-document consistency.
+- Added support, compatibility, and official release-integrity policies.
+- Hardened GitHub branch, Actions, secret, and private vulnerability settings.
+
 ## 0.1.0 Beta.2
 
 - Changed future releases to the PolyForm Noncommercial License 1.0.0.
