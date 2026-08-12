@@ -1,7 +1,7 @@
 # PartLoom AI Platform 安装与配置
 
 本文面向希望从 GitHub 源码运行 PartLoom 的 Windows 用户。当前公开的
-`v0.1.0-beta.2` Release 只提供 GitHub 自动生成的源码归档，**尚未发布经过签名的
+`v0.1.0-beta.3` Release 只提供 GitHub 自动生成的源码归档，**尚未发布经过签名的
 预编译 Windows 安装包**。请不要从非项目官方 Release 页面下载声称是 PartLoom 的
 可执行文件。
 
@@ -62,7 +62,7 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pytest
 ```
 
-公开基线为 `419 passed, 5 skipped`。跳过项依赖不随仓库公开的真实 CAD 持久引用模型，
+公开基线为 `421 passed, 5 skipped`。跳过项依赖不随仓库公开的真实 CAD 持久引用模型，
 不影响 CAD-IR、Pipeline 和连接器逻辑测试。
 
 ## 4. 启动桌面 GUI

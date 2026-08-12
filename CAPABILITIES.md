@@ -1,6 +1,6 @@
 # PartLoom 能力与验证状态
 
-本文档描述 v0.1.0 Beta.2 源码可见仓库的真实能力边界。README 中出现的
+本文档描述 v0.1.0 Beta.3 源码可见仓库的真实能力边界。README 中出现的
 operation 必须以本页状态、CAD-IR 参数契约和当前环境门禁为准。
 
 ## 状态定义
@@ -19,7 +19,7 @@ operation 必须以本页状态、CAD-IR 参数契约和当前环境门禁为准
 ```text
 Windows / Python 3.11: passed
 Windows / Python 3.13: passed
-Regression: 419 passed, 5 skipped
+Regression: 421 passed, 5 skipped
 Release audit: 0 issues
 Distribution build: passed
 ```

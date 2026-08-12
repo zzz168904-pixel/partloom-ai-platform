@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import tomllib
 from pathlib import Path
 
 
@@ -77,6 +78,115 @@ FORBIDDEN_PATTERNS = {
         r"(?im)^(?:OPENAI|DEEPSEEK|ANTHROPIC|GEMINI|DASHSCOPE)_API_KEY[ \t]*=[ \t]*[^\s#]+"
     ),
 }
+REQUIRED_ROOT_FILES = {
+    "CAPABILITIES.md",
+    "COMMERCIAL_LICENSE.md",
+    "COMPATIBILITY.md",
+    "CONTRIBUTING.md",
+    "CONTRIBUTOR_POLICY.md",
+    "DISCLAIMER.md",
+    "INSTALL.md",
+    "LICENSE",
+    "LICENSE_HISTORY.md",
+    "NOTICE",
+    "README.md",
+    "RELEASE_POLICY.md",
+    "SECURITY.md",
+    "SOURCE_AVAILABLE_SCOPE.md",
+    "SUPPORT.md",
+    "THIRD_PARTY_NOTICES.md",
+    "VERSION",
+    "pyproject.toml",
+}
+OFFICIAL_REPOSITORY = "https://github.com/zzz168904-pixel/partloom-ai-platform"
+EXPECTED_LICENSE = "PolyForm-Noncommercial-1.0.0"
+ACTION_REF_PATTERN = re.compile(r"^\s*(?:-\s+)?uses:\s+([^\s#]+)", re.MULTILINE)
+
+
+def _release_version_from_pep440(version: str) -> str:
+    match = re.fullmatch(r"(\d+\.\d+\.\d+)b(\d+)", version)
+    return f"{match.group(1)}-beta.{match.group(2)}" if match else version
+
+
+def _dependency_name(requirement: str) -> str:
+    return re.split(r"[\s<>=!~;\[]", requirement, maxsplit=1)[0].lower().replace("_", "-")
+
+
+def metadata_issues(root: Path) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+
+    for name in sorted(REQUIRED_ROOT_FILES):
+        if not (root / name).is_file():
+            issues.append({"kind": "missing_release_file", "path": name, "detail": name})
+
+    if issues:
+        return issues
+
+    project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+    release_version = (root / "VERSION").read_text(encoding="utf-8").strip()
+    if _release_version_from_pep440(str(project.get("version", ""))) != release_version:
+        issues.append(
+            {
+                "kind": "version_mismatch",
+                "path": "pyproject.toml",
+                "detail": f"pyproject={project.get('version')} VERSION={release_version}",
+            }
+        )
+    if project.get("license") != EXPECTED_LICENSE:
+        issues.append(
+            {
+                "kind": "license_metadata_mismatch",
+                "path": "pyproject.toml",
+                "detail": str(project.get("license")),
+            }
+        )
+
+    license_text = (root / "LICENSE").read_text(encoding="utf-8")
+    notice = (root / "NOTICE").read_text(encoding="utf-8")
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    third_party = (root / "THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8").lower()
+    if "PolyForm Noncommercial License 1.0.0" not in license_text:
+        issues.append({"kind": "license_text_mismatch", "path": "LICENSE", "detail": EXPECTED_LICENSE})
+    if "Required Notice:" not in notice:
+        issues.append({"kind": "required_notice_missing", "path": "NOTICE", "detail": "Required Notice:"})
+    if OFFICIAL_REPOSITORY not in readme:
+        issues.append({"kind": "official_repository_missing", "path": "README.md", "detail": OFFICIAL_REPOSITORY})
+    if "源码可见" not in readme or "COMMERCIAL_LICENSE.md" not in readme:
+        issues.append({"kind": "distribution_boundary_missing", "path": "README.md", "detail": "source-available/commercial boundary"})
+
+    for requirement in project.get("dependencies", []):
+        dependency = _dependency_name(str(requirement))
+        if f"`{dependency}`" not in third_party:
+            issues.append(
+                {
+                    "kind": "dependency_notice_missing",
+                    "path": "THIRD_PARTY_NOTICES.md",
+                    "detail": dependency,
+                }
+            )
+
+    for workflow in sorted((root / ".github" / "workflows").glob("*.yml")):
+        text = workflow.read_text(encoding="utf-8")
+        if "pull_request_target" in text or "self-hosted" in text:
+            issues.append(
+                {
+                    "kind": "unsafe_ci_trigger_or_runner",
+                    "path": str(workflow.relative_to(root)),
+                    "detail": "pull_request_target/self-hosted",
+                }
+            )
+        for action_ref in ACTION_REF_PATTERN.findall(text):
+            if action_ref.startswith("./"):
+                continue
+            if not re.fullmatch(r"[^@]+@[0-9a-f]{40}", action_ref):
+                issues.append(
+                    {
+                        "kind": "unpinned_github_action",
+                        "path": str(workflow.relative_to(root)),
+                        "detail": action_ref,
+                    }
+                )
+    return issues
 
 
 def should_skip(path: Path, root: Path) -> bool:
@@ -85,7 +195,7 @@ def should_skip(path: Path, root: Path) -> bool:
 
 
 def audit(root: Path) -> dict[str, object]:
-    issues: list[dict[str, str]] = []
+    issues: list[dict[str, str]] = metadata_issues(root)
     checked_files = 0
 
     for path in sorted(root.rglob("*")):

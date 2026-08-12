@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 import tomllib
 from pathlib import Path
 
@@ -9,6 +10,11 @@ from cad_agent.runtime_config import application_data_dir, output_root
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from release_audit import metadata_issues  # noqa: E402
 
 
 def test_runtime_paths_are_partloom_scoped(monkeypatch) -> None:
@@ -47,7 +53,7 @@ def test_noncommercial_release_metadata_is_consistent() -> None:
     with (ROOT / "pyproject.toml").open("rb") as stream:
         project = tomllib.load(stream)["project"]
 
-    assert project["version"] == "0.1.0b2"
+    assert project["version"] == "0.1.0b3"
     assert project["license"] == "PolyForm-Noncommercial-1.0.0"
     assert "PolyForm Noncommercial License 1.0.0" in (
         ROOT / "LICENSE"
@@ -58,8 +64,27 @@ def test_noncommercial_release_metadata_is_consistent() -> None:
 def test_noncommercial_boundary_documents_exist() -> None:
     required = {
         "COMMERCIAL_LICENSE.md",
+        "COMPATIBILITY.md",
         "CONTRIBUTOR_POLICY.md",
         "LICENSE_HISTORY.md",
+        "RELEASE_POLICY.md",
         "SOURCE_AVAILABLE_SCOPE.md",
+        "SUPPORT.md",
+        "THIRD_PARTY_NOTICES.md",
     }
     assert sorted(name for name in required if not (ROOT / name).is_file()) == []
+
+
+def test_repository_metadata_and_ci_controls_are_consistent() -> None:
+    assert metadata_issues(ROOT) == []
+
+
+def test_windows_release_carries_support_and_integrity_documents() -> None:
+    build_script = (ROOT / "scripts" / "build_release.ps1").read_text(encoding="utf-8")
+    for name in (
+        "COMPATIBILITY.md",
+        "RELEASE_POLICY.md",
+        "SUPPORT.md",
+        "THIRD_PARTY_NOTICES.md",
+    ):
+        assert f'"{name}"' in build_script

@@ -1,5 +1,14 @@
 # Security Policy
 
+## Supported versions
+
+| Version | Supported |
+|---|---|
+| `0.1.0-beta.3` | Yes |
+| `0.1.0-beta.2` | Yes |
+| `0.1.0-beta.1` | No; historical MIT snapshot |
+| Earlier snapshots | No |
+
 ## Secrets
 
 Never commit `.env.local`, API keys, access tokens, customer documents, or

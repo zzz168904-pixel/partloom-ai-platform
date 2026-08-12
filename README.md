@@ -136,7 +136,7 @@ py -3.13 -m venv .venv
 当前公开基线为：
 
 ```text
-419 passed, 5 skipped
+421 passed, 5 skipped
 ```
 
 5 个跳过项依赖真实专有 CAD 模型，用于 SolidWorks 持久化引用验收。干净
@@ -314,6 +314,9 @@ operation 的所有参数组合。
 - 主分支：需要 CI 状态检查和 Pull Request；
 - Issue/PR：只能使用合成 CAD-IR 和脱敏诊断信息；
 - 安全问题：见 [SECURITY.md](SECURITY.md)；
+- 支持范围：见 [SUPPORT.md](SUPPORT.md)；
+- 兼容性矩阵：见 [COMPATIBILITY.md](COMPATIBILITY.md)；
+- 官方发布政策：见 [RELEASE_POLICY.md](RELEASE_POLICY.md)；
 - 贡献规则：见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 源码公开边界与许可证
@@ -327,6 +330,7 @@ operation 的所有参数组合。
 - 历史授权说明：[LICENSE_HISTORY.md](LICENSE_HISTORY.md)
 - 工程免责声明：[DISCLAIMER.md](DISCLAIMER.md)
 - 第三方说明：[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+- 官方发布与完整性：[RELEASE_POLICY.md](RELEASE_POLICY.md)
 - 当前许可证：[PolyForm Noncommercial 1.0.0](LICENSE)
 
 PartLoom 是独立的源码可见项目，与 Dassault Systemes、SOLIDWORKS、Autodesk、
