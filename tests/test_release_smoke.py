@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tomllib
 from pathlib import Path
 
 from cad_agent.direct_cad_ir import DirectCADIRService
@@ -40,3 +41,25 @@ def test_plate_example_passes_direct_cad_ir_planning(tmp_path: Path) -> None:
     planned = DirectCADIRService(tmp_path).plan(str(example), stage_mode="model_3d")
     assert planned["planning_validation"]["allow_pipeline"] is True
     assert planned["requested_stages"] == ["model_3d"]
+
+
+def test_noncommercial_release_metadata_is_consistent() -> None:
+    with (ROOT / "pyproject.toml").open("rb") as stream:
+        project = tomllib.load(stream)["project"]
+
+    assert project["version"] == "0.1.0b2"
+    assert project["license"] == "PolyForm-Noncommercial-1.0.0"
+    assert "PolyForm Noncommercial License 1.0.0" in (
+        ROOT / "LICENSE"
+    ).read_text(encoding="utf-8")
+    assert "Required Notice:" in (ROOT / "NOTICE").read_text(encoding="utf-8")
+
+
+def test_noncommercial_boundary_documents_exist() -> None:
+    required = {
+        "COMMERCIAL_LICENSE.md",
+        "CONTRIBUTOR_POLICY.md",
+        "LICENSE_HISTORY.md",
+        "SOURCE_AVAILABLE_SCOPE.md",
+    }
+    assert sorted(name for name in required if not (ROOT / name).is_file()) == []

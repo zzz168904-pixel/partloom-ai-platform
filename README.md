@@ -2,11 +2,11 @@
 
 [![Public CI](https://github.com/zzz168904-pixel/partloom-ai-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/zzz168904-pixel/partloom-ai-platform/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/zzz168904-pixel/partloom-ai-platform?include_prereleases)](https://github.com/zzz168904-pixel/partloom-ai-platform/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/License-PolyForm%20Noncommercial%201.0.0-orange.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.11--3.13-blue.svg)](INSTALL.md)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2011-0078D4.svg)](INSTALL.md)
 
-PartLoom AI Platform 是一套面向 Windows 桌面 CAD 的开源自动化平台。
+PartLoom AI Platform 是一套面向 Windows 桌面 CAD 的源码可见自动化平台。
 它使用确定性的 CAD 中间语言 **CAD-IR** 连接任务规划、参数校验、Skill
 路由、几何引用、分阶段执行、SolidWorks、AutoCAD、PDF2CAD、文件转换
 和结果报告。
@@ -32,6 +32,12 @@ PartLoom AI Platform 是一套面向 Windows 桌面 CAD 的开源自动化平台
 > 有许可证的桌面 CAD。真实 SLDPRT、SLDDRW、DWG 和 PDF 交付仍必须在本机
 > SolidWorks/AutoCAD 环境验收。未支持、信息不完整或目标几何有歧义的任务
 > 应在修改 CAD 文档前失败关闭，不能被包装成成功。
+
+> **非商业许可边界**：从 `v0.1.0-beta.2` 起，本项目采用
+> [PolyForm Noncommercial 1.0.0](LICENSE)。个人学习、无预期商业用途的研究实验
+> 以及许可证列明的非商业组织可按条款使用；企业内部使用、收费服务、客户交付、
+> 产品集成、SaaS/API、硬件捆绑和再销售均需另行取得书面商业授权。历史
+> `v0.1.0-beta.1` 的 MIT 权利保持有效，详见 [LICENSE_HISTORY.md](LICENSE_HISTORY.md)。
 
 ## 项目入口
 
@@ -130,7 +136,7 @@ py -3.13 -m venv .venv
 当前公开基线为：
 
 ```text
-417 passed, 5 skipped
+419 passed, 5 skipped
 ```
 
 5 个跳过项依赖真实专有 CAD 模型，用于 SolidWorks 持久化引用验收。干净
@@ -219,7 +225,10 @@ partloom-ai-platform/
 ├── tests/                         # 合成数据回归测试
 ├── CAPABILITIES.md                # 能力与验证状态
 ├── INSTALL.md                     # 安装、配置和故障排查
-├── OPEN_SOURCE_SCOPE.md           # 开源与数据边界
+├── SOURCE_AVAILABLE_SCOPE.md      # 源码公开与数据边界
+├── COMMERCIAL_LICENSE.md          # 商业使用边界与授权入口
+├── CONTRIBUTOR_POLICY.md          # 外部贡献与再授权边界
+├── LICENSE_HISTORY.md             # 历史版本授权说明
 └── DISCLAIMER.md                  # 工程免责声明
 ```
 
@@ -307,18 +316,20 @@ operation 的所有参数组合。
 - 安全问题：见 [SECURITY.md](SECURITY.md)；
 - 贡献规则：见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-## 开源边界与许可证
+## 源码公开边界与许可证
 
-平台核心源码已经公开。仓库仍不会包含客户资料、运行输出、API Key、厂商
+平台核心源码可以公开查看。仓库仍不会包含客户资料、运行输出、API Key、厂商
 二进制、MinerU 权重或未获再分发授权的模型库。这些是隐私和许可证边界，
 不是隐藏的平台执行服务。
 
-- 开源范围：[OPEN_SOURCE_SCOPE.md](OPEN_SOURCE_SCOPE.md)
+- 源码公开范围：[SOURCE_AVAILABLE_SCOPE.md](SOURCE_AVAILABLE_SCOPE.md)
+- 商业使用边界：[COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md)
+- 历史授权说明：[LICENSE_HISTORY.md](LICENSE_HISTORY.md)
 - 工程免责声明：[DISCLAIMER.md](DISCLAIMER.md)
 - 第三方说明：[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
-- 许可证：[MIT License](LICENSE)
+- 当前许可证：[PolyForm Noncommercial 1.0.0](LICENSE)
 
-PartLoom 是独立开源项目，与 Dassault Systemes、SOLIDWORKS、Autodesk、
+PartLoom 是独立的源码可见项目，与 Dassault Systemes、SOLIDWORKS、Autodesk、
 AutoCAD 或模型 Provider 厂商不存在附属、认证或背书关系。
 
 ## 相关项目

@@ -4,6 +4,7 @@
 
 ## 验证
 
+- [ ] 我已阅读 `CONTRIBUTOR_POLICY.md`，并理解外部 PR 在签署单独贡献协议前不会合并
 - [ ] `python scripts/release_audit.py` 通过
 - [ ] `python -m pytest` 通过
 - [ ] 只使用合成数据
